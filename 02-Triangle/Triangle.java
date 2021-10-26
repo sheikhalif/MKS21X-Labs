@@ -64,4 +64,12 @@ public class Triangle{
     }
     return "error";
   }
+
+  public double area(){
+    double sideA = Math.sqrt(Math.pow(x.getX()-y.getX(), 2) + Math.pow(x.getY()-y.getY(), 2));
+    double sideB = Math.sqrt(Math.pow(x.getX()-z.getX(), 2) + Math.pow(x.getY()-z.getY(), 2));
+    double sideC = Math.sqrt(Math.pow(y.getX()-z.getX(), 2) + Math.pow(y.getY()-z.getY(), 2));
+    double semiPer = (sideA + sideB + sideC)/2;
+    return (Math.sqrt(semiPer * (semiPer - sideA) * (semiPer - sideB) * (semiPer - sideC)));
+  }
 }
