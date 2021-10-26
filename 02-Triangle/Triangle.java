@@ -43,6 +43,17 @@ public class Triangle{
   }
 
   public boolean equals(Triangle other){
-    return (closeEnough(x, other.x) == true && closeEnough(y, other.y) == true && closeEnough(x, other.x) == true);
+    return (closeEnough(x.getX(), other.x.getX()) == true && closeEnough(y.getX(), other.y.getX()) == true && closeEnough(x.getY(), other.x.getY()) == true && closeEnough(x.getY(), other.x.getY()) == true && closeEnough(y.getY(), other.y.getY()) == true && closeEnough(x.getY(), other.x.getY()) == true);
+  }
+
+  public String classify(){
+    lengthXY = Math.sqrt(Math.pow(x.getX()-y.getX(), 2) + Math.pow(x.getY()-y.getY(), 2));
+    lengthXZ = Math.sqrt(Math.pow(x.getX()-z.getX(), 2) + Math.pow(x.getY()-z.getY(), 2));
+    lengthYZ = Math.sqrt(Math.pow(y.getX()-z.getX(), 2) + Math.pow(y.getY()-z.getY(), 2));
+    if (length)
+    if ((lengthXY.closeEnough(lengthXZ) == false) && (lengthXY.closeEnough(lengthYZ) == false) && (lengthXZ.closeEnough(lengthYZ) == false)){
+      return "Scalene";
+    }
+
   }
 }
