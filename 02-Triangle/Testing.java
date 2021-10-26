@@ -1,4 +1,12 @@
 public class Testing{
+  public static boolean closeEnough(double a, double b){
+    if (a == 0 || b == 0){
+      return (a == b);
+    }
+    double subValue = (b-a);
+    if (subValue < 0)subValue = -1 * (b-a);
+    return (subValue/a < 0.00001 && subValue/b < 0.00001);
+  }
   public static void main(String[]args){
     Point P1 = new Point(1,1);
     Point P2 = new Point(2,2);
@@ -8,6 +16,7 @@ public class Testing{
     Triangle T2 = new Triangle(P2, P3, P4);
     Triangle T3 = new Triangle(1, 1, 2, 2, 0, 0);
     Triangle T4 = new Triangle(2, 2, 0, 0, 3, 4);
+    /*
     System.out.println(P1.toString());
     System.out.println(P2.toString());
     System.out.println(P3.toString());
@@ -27,5 +36,9 @@ public class Testing{
     System.out.println(T1.toString());
     System.out.println(T2.toString());
     System.out.println(T3.toString());
+    */
+    System.out.println(closeEnough(100.0, 99.99999));
+    System.out.println(closeEnough(200.0, 99.99999));
+    System.out.println(closeEnough(0.00001, 0.00000999999));
   }
 }

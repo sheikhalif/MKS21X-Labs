@@ -28,4 +28,13 @@ public class Point{
   public String toString(){
     return ("(" + x + "), (" + y +")");
   }
+
+  public static boolean closeEnough(double a, double b){
+    if (a == 0 || b == 0){
+      return (a == b);
+    }
+    double subValue = (b-a);
+    if (subValue < 0)subValue = -1 * (b-a);
+    return (subValue/a < 0.00001 && subValue/b < 0.00001);
+  }
 }
