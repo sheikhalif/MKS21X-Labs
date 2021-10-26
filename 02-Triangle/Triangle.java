@@ -43,6 +43,6 @@ public class Triangle{
   }
 
   public boolean equals(Triangle other){
-    return (closeEnough(x, other.x) == true && closeEnough(y, other.y) == true && closeEnough(x, other.x) == true)
+    return (closeEnough(x, other.x) == true && closeEnough(y, other.y) == true && closeEnough(x, other.x) == true);
   }
 }
