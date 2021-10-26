@@ -47,13 +47,21 @@ public class Triangle{
   }
 
   public String classify(){
-    lengthXY = Math.sqrt(Math.pow(x.getX()-y.getX(), 2) + Math.pow(x.getY()-y.getY(), 2));
-    lengthXZ = Math.sqrt(Math.pow(x.getX()-z.getX(), 2) + Math.pow(x.getY()-z.getY(), 2));
-    lengthYZ = Math.sqrt(Math.pow(y.getX()-z.getX(), 2) + Math.pow(y.getY()-z.getY(), 2));
-    if (length)
-    if ((lengthXY.closeEnough(lengthXZ) == false) && (lengthXY.closeEnough(lengthYZ) == false) && (lengthXZ.closeEnough(lengthYZ) == false)){
+    double lengthXY = Math.sqrt(Math.pow(x.getX()-y.getX(), 2) + Math.pow(x.getY()-y.getY(), 2));
+    double lengthXZ = Math.sqrt(Math.pow(x.getX()-z.getX(), 2) + Math.pow(x.getY()-z.getY(), 2));
+    double lengthYZ = Math.sqrt(Math.pow(y.getX()-z.getX(), 2) + Math.pow(y.getY()-z.getY(), 2));
+    System.out.println(lengthXY);
+    System.out.println(lengthXZ);
+    System.out.println(lengthYZ);
+    if ((closeEnough(lengthXY, lengthXY) == true) && (closeEnough(lengthXY, lengthYZ) == true)){
+      return "Equilateral";
+    }
+    if ((closeEnough(lengthXY, lengthXZ) == false) && (closeEnough(lengthXY, lengthYZ) == false) && (closeEnough(lengthXZ, lengthYZ) == false)){
       return "Scalene";
     }
-
+    if ((closeEnough(lengthXY, lengthXZ) == true) || (closeEnough(lengthXY, lengthYZ) == true) || (closeEnough(lengthXZ, lengthYZ) == true)){
+      return "Isosceles";
+    }
+    return "error";
   }
 }

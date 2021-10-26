@@ -45,9 +45,9 @@ public class Testing{
     System.out.println(T5.equals(T6));
     System.out.println(T1.equals(T2));
     */
-    Triangle T7 = new Triangle(-3, 0, 3, 0, 0, 5.196);
+    Triangle T7 = new Triangle(-3, 0, 3, 0, 0, 5.1961524);
     Triangle T8 = new Triangle (4, 6, 2, 5, 5, 11);
-    Triangle T9 = new Triangle(-1, 0, 1, 0, 5, 0);
+    Triangle T9 = new Triangle(-1, 0, 1, 0, 0, 5);
     System.out.println(T7.classify());
     System.out.println(T8.classify());
     System.out.println(T9.classify());
