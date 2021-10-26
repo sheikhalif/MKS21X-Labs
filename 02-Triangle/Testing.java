@@ -24,5 +24,8 @@ public class Testing{
     System.out.println(T3.getVertex(1));
     System.out.println(T3.getVertex(2));
     System.out.println(T3.getVertex(3)); //should return (3, 4);
+    System.out.println(T1.toString());
+    System.out.println(T2.toString());
+    System.out.println(T3.toString());
   }
 }

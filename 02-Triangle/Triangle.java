@@ -30,6 +30,6 @@ public class Triangle{
   }
 
   public String toString(){
-    return ("{"+ x +", " + y + ", " + z + "}");
+    return ("{("+ x.getX() +", "+ x.getY() + "), (" + y.getX() + ", " + y.getY() + "), (" + z.getX() + ", " + z.getY()) +")}";
   }
 }
