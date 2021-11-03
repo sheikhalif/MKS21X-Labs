@@ -41,4 +41,17 @@ public class RealNumber{
   public String toString(){
     return ""+value;
   }
+
+  public int compareTo(RealNumber other){
+    System.out.println(value);
+    System.out.println(other.getValue());
+    if (value > other.getValue())return 1;
+    if (value < other.getValue())return -1;
+    if (value == other.getValue())return 0;
+    return -2;
+  }
+
+  public boolean equals(RealNumber other){
+    return (value == other.getValue());
+  }
 }
