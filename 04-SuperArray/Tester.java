@@ -1,5 +1,7 @@
 public class Tester{
   public static void main(String args[]){
+    /*
+    //Phase 1 Testing
     SuperArray example1 = new SuperArray();
     System.out.println(example1.size());
     System.out.println(example1.toString());
@@ -12,5 +14,67 @@ public class Tester{
     System.out.println(example1.size());
     System.out.println(example1.toString());
     System.out.println(example1.toStringDebug());
+    System.out.println(example1.get(4));
+    example1.add("second index element");
+    System.out.println(example1.get(2));
+    System.out.println(example1.set(4, "should be error"));
+    System.out.println(example1.set(2, "changed second index"));
+    System.out.println(example1.get(2));
+
+    //Phase 2 Testing
+    SuperArray example2 = new  SuperArray();
+    example2.add("element 1");
+    example2.add("element 2");
+    example2.add("element 3");
+    example2.add("element 4");
+    System.out.println("First loop (should print out all the elements in the SuperArray)");
+    for (int i = 0; i < example2.size(); i++){
+      System.out.println(example2.get(i));
+    }
+    System.out.println("\nSecond loop (should print out all the elements in the SuperArray but change them too)");
+    for (int i = 0; i < example2.size(); i++){
+      System.out.println(example2.set(i, example2.get(i) + " changed"));
+    }
+    System.out.println("\nThird loop loop (should print out all the changed elements in the SuperArray)");
+    for (int i = 0; i < example2.size(); i++){
+      System.out.println(example2.get(i));
+    }
+    */
+    SuperArray example3 = new SuperArray(2);
+    example3.add("element 1");
+    example3.add("element 2");
+    for (int i = 0; i < example3.size(); i++){
+      System.out.println(example3.get(i));
+    }
+    System.out.println("\nSecond loop (should print out all the elements in the SuperArray but change them too)");
+    for (int i = 0; i < example3.size(); i++){
+      System.out.println(example3.set(i, example3.get(i) + " changed"));
+    }
+    System.out.println("\nThird loop loop (should print out all the changed elements in the SuperArray)");
+    for (int i = 0; i < example3.size(); i++){
+      System.out.println(example3.get(i));
+    }
+    System.out.println(example3.toString());
+    System.out.println(example3.toStringDebug());
+    System.out.println(example3.testResize().toStringDebug());
+    example3.add("element 3");
+    example3.add("element 4");
+    example3.add("element 5");
+    System.out.println(example3.toString());
+    System.out.println(example3.toStringDebug());
+    System.out.println(example3.testResize().toStringDebug());
+    System.out.println("First loop (should print out all the elements in the SuperArray)");
+    for (int i = 0; i < example3.size(); i++){
+      System.out.println(example3.get(i));
+    }
+    System.out.println("\nSecond loop (should print out all the elements in the SuperArray but change them too)");
+    for (int i = 0; i < example3.size(); i++){
+      System.out.println(example3.set(i, example3.get(i) + " changed"));
+    }
+    System.out.println("\nThird loop loop (should print out all the changed elements in the SuperArray)");
+    for (int i = 0; i < example3.size(); i++){
+      System.out.println(example3.get(i));
+    }
+
   }
 }
