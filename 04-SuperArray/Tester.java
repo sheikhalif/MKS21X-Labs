@@ -39,7 +39,7 @@ public class Tester{
     for (int i = 0; i < example2.size(); i++){
       System.out.println(example2.get(i));
     }
-    */
+
     SuperArray example3 = new SuperArray(2);
     example3.add("element 1");
     example3.add("element 2");
@@ -75,6 +75,17 @@ public class Tester{
     for (int i = 0; i < example3.size(); i++){
       System.out.println(example3.get(i));
     }
+    */
+
+    SuperArray example4 = new SuperArray(5);
+    example4.add("hi");
+    example4.add("my");
+    example4.add("name");
+    example4.add("is");
+    example4.add("sheikh");
+    System.out.println(example4.remove(2));
+    System.out.println(example4.toString());
+    System.out.println(example4.toStringDebug());
 
   }
 }

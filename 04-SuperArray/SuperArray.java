@@ -78,4 +78,22 @@ public class SuperArray{
     this.resize();
     return this;
   }
+
+  public String remove(int index){
+    if (index < 0 || index >= size){
+      System.out.println("error: string index in remove");
+      return null;
+    }
+    String answer = data[index];
+    String[] remStringArr = new String[data.length];
+    for (int i = 0; i < index; i++){
+      remStringArr[i] = data[i];
+    }
+    for (int x = index+1; x < data.length; x++){
+      remStringArr[x-1] = data[x];
+    }
+    size--;
+    data = remStringArr;
+    return answer;
+  }
 }
