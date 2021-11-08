@@ -75,7 +75,6 @@ public class Tester{
     for (int i = 0; i < example3.size(); i++){
       System.out.println(example3.get(i));
     }
-    */
 
     SuperArray example4 = new SuperArray(5);
     example4.add("hi");
@@ -86,6 +85,17 @@ public class Tester{
     System.out.println(example4.remove(2));
     System.out.println(example4.toString());
     System.out.println(example4.toStringDebug());
+    */
+
+    SuperArray example5 = new SuperArray(6);
+    example5.add("element1");
+    example5.add("hi");
+    example5.add("hi");
+    example5.add("my");
+    example5.add("name's");
+    example5.add("sheikh");
+    System.out.println(example5.indexOf("hi")); //should return 1
+    System.out.println(example5.lastIndexOf("hi")); //should return 2
 
   }
 }
