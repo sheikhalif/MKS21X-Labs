@@ -120,9 +120,18 @@ public class SuperArray{
       addStringArr[i] = data[i];
     }
     addStringArr[index] = value;
-    for int (i=index+1; i < addStringArr.length - index; i++){
+    for (int  i=index+1; i < addStringArr.length - index; i++){
       addStringArr[i] = data[i-1];
     }
-    addStringArr = data;
+    data = addStringArr;
   }
+
+  public boolean remove(String s){
+    if (data.indexOf(s) == -1){
+      return false;
+    }
+    data = data.remove(data.indexOf(s));
+    return true;
+  }
+
 }
