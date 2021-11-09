@@ -110,5 +110,6 @@ public class Tester{
     System.out.println(example6.remove("three"));
     System.out.println(example6.remove("four"));
     System.out.println(example6.toStringDebug());
+    System.out.println(example6.remove("seven"));
   }
 }

@@ -127,10 +127,10 @@ public class SuperArray{
   }
 
   public boolean remove(String s){
-    if (data.indexOf(s) == -1){
+    if (this.indexOf(s) == -1){
       return false;
     }
-    data = data.remove(data.indexOf(s));
+    this.remove(this.indexOf(s));
     return true;
   }
 
