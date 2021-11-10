@@ -2,6 +2,14 @@ public class SuperArray{
   private String[] data;
   private int size;
 
+  private void resize(){
+    String[] newStringArr = new String[data.length*2 + 1];
+    for (int i = 0; i < data.length; i++){
+      newStringArr[i] = data[i];
+    }
+    data = newStringArr;
+  }
+
   public SuperArray(){
     data = new String[10];
     size = 0;
@@ -12,6 +20,7 @@ public class SuperArray{
   }
 
   public boolean add(String s){
+    if (size == data.length)this.resize();
     data[size] = s;
     size++;
     return true;
@@ -66,14 +75,6 @@ public class SuperArray{
     size = 0;
   }
 
-  private void resize(){
-    String[] newStringArr = new String[data.length*2 + 1];
-    for (int i = 0; i < data.length; i++){
-      newStringArr[i] = data[i];
-    }
-    data = newStringArr;
-  }
-
   public SuperArray testResize(){
     this.resize();
     return this;
@@ -112,15 +113,16 @@ public class SuperArray{
   }
 
   public void add(int index, String value){
-    if (index < 0 || index > size){
-      System.out.println("index error in add");
+    if (index <= 0 || index > size){
+      System.out.println("index error in add with index = " + index + " and value = " + value+ ". Size is " + size);
     }
     String[] addStringArr = new String[data.length + 1];
+    size++;
     for (int i = 0; i < index; i++){
       addStringArr[i] = data[i];
     }
     addStringArr[index] = value;
-    for (int  i=index+1; i < addStringArr.length - index; i++){
+    for (int  i=index+1; i < size; i++){
       addStringArr[i] = data[i-1];
     }
     data = addStringArr;
