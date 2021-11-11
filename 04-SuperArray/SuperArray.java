@@ -54,16 +54,14 @@ public class SuperArray{
 
   public String get(int index){
     if (index < 0 || index >= size){
-      System.out.println("error: string index in get");
-      return null;
+      throw new IndexOutOfBoundsException("Index input error in get");
     }
     return data[index];
   }
 
   public String set(int index, String element){
     if (index < 0 || index >= size){
-      System.out.println("error: string index in set");
-      return null;
+      throw new IndexOutOfBoundsException("Index input error in set");
     }
     String originalValue = data[index];
     data[index] =  element;
@@ -71,6 +69,9 @@ public class SuperArray{
   }
 
   public SuperArray(int initialCapacity){
+    if (initialCapacity < 0){
+      throw new IllegalArgumentException("SuperArray initialCapacity cannot be initialized to a negative number");
+    }
     data = new String[initialCapacity];
     size = 0;
   }
@@ -82,8 +83,7 @@ public class SuperArray{
 
   public String remove(int index){
     if (index < 0 || index >= size){
-      System.out.println("error: string index in remove");
-      return null;
+      throw new IndexOutOfBoundsException("Index input error in remove");
     }
     String answer = data[index];
     String[] remStringArr = new String[data.length];
@@ -113,8 +113,8 @@ public class SuperArray{
   }
 
   public void add(int index, String value){
-    if (index <= 0 || index > size){
-      System.out.println("index error in add with index = " + index + " and value = " + value+ ". Size is " + size);
+    if (index < -1 || index > size){
+      throw new IndexOutOfBoundsException("Index input error in add(int, string)");
     }
     String[] addStringArr = new String[data.length + 1];
     size++;

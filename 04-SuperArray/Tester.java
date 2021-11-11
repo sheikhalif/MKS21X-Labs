@@ -111,5 +111,7 @@ public class Tester{
     System.out.println(example6.remove("four"));
     System.out.println(example6.toStringDebug());
     System.out.println(example6.remove("seven"));
+    System.out.println("index 0 of get " + example6.get(0));
+    System.out.println(example6.set(example6.size(), "test"));
   }
 }
