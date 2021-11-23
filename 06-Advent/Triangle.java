@@ -3,17 +3,18 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 public class Triangle {
   public static void main(String[] args) {
-    String mode = "error";
+    int mode = Integer.parseInt(args[1]);
+    String fileName = args[0];
     int total = 0;
     try {
-      File file = new File("Triangle.txt");
+      File file = new File(fileName);
       Scanner input = new Scanner(file);
-      if (mode.equals("normal")){
+      if (mode == 1){
         while (input.hasNextInt()) {
           total += validTri(input.nextInt(), input.nextInt(), input.nextInt());
         }
       }
-      if (mode.equals("error")){
+      if (mode == 2){
         while (input.hasNextInt()){
           int a1 = input.nextInt();
           int a2 = input.nextInt();
