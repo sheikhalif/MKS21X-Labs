@@ -9,7 +9,10 @@ public class Wrapping {
     try {
       File file = new File(fileName);
       Scanner input = new Scanner(file);
-      total += sqFeet(input.nextLine());
+      while (input.hasNextLine()){
+        total += sqFeet(input.nextLine());
+      }
+
     }
     catch (FileNotFoundException ex) {
       System.out.println("Not a valid file name");
@@ -24,7 +27,6 @@ public class Wrapping {
     int side3 = Integer.parseInt(dimStrings[0]) * Integer.parseInt(dimStrings[2]);
     int slack = Math.min(Math.min(side1, side2), side3);
     int wrapNeeded = 2 * side1 + 2 * side2 + 2 * side3 + slack;
-    //System.out.println("Side 1 is: " + side1 +  "\nSide 2 is: " + side2 + " \nSide 3 is: " + side3 + "\nSlack is: " + slack + "\n We return: " + wrapNeeded);
     return wrapNeeded;
   }
 }
