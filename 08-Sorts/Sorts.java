@@ -3,6 +3,7 @@ import java.util.Random;
 
 public class Sorts{
   public static void main(String args[]){
+    String mode = args[0];
     int[] example1 = new int[]{1, 3, 4, 2, 5, 1, 3, 6, 1};
     int[] example2 = new int[]{};
     int[] example3 = new int[]{1};
@@ -10,12 +11,12 @@ public class Sorts{
     int[] example5 = new int[30];
     for (int i = 0; i < 30; i++){
       Random randomInt = new Random();
-      example5[i] = randomInt.nextInt(100);
+      example5[i] = randomInt.nextInt(10);
     }
     int[] example6 = new int[30];
-    for (int i = 0; i < 30; i++){
-      Random randomInt = new Random();
-      example5[i] = randomInt.nextInt(6);
+    Random rand = new Random();
+    for (int i = 0; i < example6.length; i++) {
+        example6[i] = rand.nextInt();
     }
     int[] example7 = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
     int[] example8 = new int[]{15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
@@ -27,14 +28,27 @@ public class Sorts{
     int[] example6a = example6.clone();
     int[] example7a = example7.clone();
     int[] example8a = example8.clone();
-    bubbleSort(example1);
-    bubbleSort(example2);
-    bubbleSort(example3);
-    bubbleSort(example4);
-    bubbleSort(example5);
-    bubbleSort(example6);
-    bubbleSort(example7);
-    bubbleSort(example8);
+    if (mode.equals("bubble")){
+      bubbleSort(example1);
+      bubbleSort(example2);
+      bubbleSort(example3);
+      bubbleSort(example4);
+      bubbleSort(example5);
+      bubbleSort(example6);
+      bubbleSort(example7);
+      bubbleSort(example8);
+    }
+    if (mode.equals("selection")){
+      selectionSort(example1);
+      selectionSort(example2);
+      selectionSort(example3);
+      selectionSort(example4);
+      selectionSort(example5);
+      selectionSort(example6);
+      selectionSort(example7);
+      selectionSort(example8);
+    }
+
     Arrays.sort(example1a);
     Arrays.sort(example2a);
     Arrays.sort(example3a);
@@ -68,5 +82,29 @@ public class Sorts{
       }
       if (switches == 0)keepGoing = false;
     }
+  }
+
+  public static void selectionSort(int[] data){
+    for (int i = 0; i < data.length; i++){
+      int min = minNum(data, i);
+      for (int x = i; x < data.length; x++){
+        if (data[x] == min){
+          int oldVal = data[i];
+          int newVal = data[x];
+          data[i] = newVal;
+          data[x] = oldVal;
+        }
+      }
+    }
+  }
+
+  public static int minNum(int[] data, int index){
+    int min = data[index];
+    for (int i = index; i < data.length; i++){
+      if (data[i] < min){
+        min = data[i];
+      }
+    }
+    return min;
   }
 }
