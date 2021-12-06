@@ -48,6 +48,16 @@ public class Sorts{
       selectionSort(example7);
       selectionSort(example8);
     }
+    if (mode.equals("insertion")){
+      insertionSort(example1);
+      insertionSort(example2);
+      insertionSort(example3);
+      insertionSort(example4);
+      insertionSort(example5);
+      insertionSort(example6);
+      insertionSort(example7);
+      insertionSort(example8);
+    }
 
     Arrays.sort(example1a);
     Arrays.sort(example2a);
@@ -106,5 +116,23 @@ public class Sorts{
       }
     }
     return min;
+  }
+
+  public static void insertionSort(int[] data){
+    int replaceIndex = 0;
+    for (int i = 1; i < data.length; i++){
+      if (data[i] < data[i-1]){
+        int temp = data[i];
+        for (int x = 0; x < i; x++){
+          if (data[x] > data[i]){
+            replaceIndex = x;
+            for (int y = i-1; y >= x; y--){
+              data[y+1] = data[y];
+            }
+          }
+        }
+        data[replaceIndex] = temp;
+      }
+    }
   }
 }
