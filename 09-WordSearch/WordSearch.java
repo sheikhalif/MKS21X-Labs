@@ -44,6 +44,7 @@ public class WordSearch{
       return "";
     }
     public static void main(String args[]){
+      /**
       WordSearch example1 = new WordSearch(3, 4);
       example1.clear();
       System.out.println(example1.toString());
@@ -61,6 +62,17 @@ public class WordSearch{
       System.out.println(example2.toString() + "\n");
       example2.addWordDiagonal("bbbb", 2, 1);
       System.out.println(example2.toString());
+      **/
+
+      WordSearch example3 = new WordSearch(10, 10);
+      example3.clear();
+      System.out.println(example3.toString() + "\n");
+      example3.addWord(3, 2, "hello", 1, 1);
+      System.out.println(example3.toString() + "\n");
+      example3.addWord(10, 10, "tree", -1, -1);
+      System.out.println(example3.toString() + "\n");
+      example3.addWord(7, 4, "droe", 0, 1);
+      System.out.println(example3.toString() + "\n");
 
     }
 
@@ -146,6 +158,27 @@ public class WordSearch{
       }
       for (int i = 0; i < word.length(); i++){
         data[row+i-1][col+i-1] = word.charAt(i);
+      }
+      return true;
+    }
+
+    public boolean addWord(int row, int col, String word, int rowInc, int colInc){
+      int rowR = row;
+      int colR = col;
+      for (int i = 0; i < word.length(); i++){
+        if (data[rowR-1][colR-1] != '_' && data[rowR-1][colR-1] != word.charAt(i)){
+          System.out.println("word does not fit");
+          return false;
+        }
+        rowR += rowInc;
+        colR += colInc;
+      }
+      rowR = row;
+      colR = col;
+      for (int  i = 0; i < word.length(); i++){
+        data[rowR-1][colR-1] = word.charAt(i);
+        rowR += rowInc;
+        colR += colInc;
       }
       return true;
     }
