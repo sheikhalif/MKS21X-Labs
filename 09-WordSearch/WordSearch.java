@@ -91,6 +91,7 @@ public class WordSearch{
      * or there are overlapping letters that do not match, then false is returned
      * and the board is NOT modified.
      */
+     /**
     public boolean addWordHorizontal(String word,int row, int col){
       if (row > rowsNum || col > (colsNum - word.length() + 1)){
         System.out.println("invalid row and col for this word");
@@ -107,6 +108,7 @@ public class WordSearch{
       }
       return true;
     }
+    **/
 
 
    /**Attempts to add a given word to the specified position of the WordGrid.
@@ -120,6 +122,7 @@ public class WordSearch{
      *or there are overlapping letters that do not match, then false is returned.
      *and the board is NOT modified.
      */
+     /**
     public boolean addWordVertical(String word,int row, int col){
       if (col > colsNum || row > rowsNum || row > (rowsNum - word.length() + 1)){
         System.out.println("invalid row and col for this word");
@@ -136,6 +139,7 @@ public class WordSearch{
       }
       return true;
     }
+    **/
     /**Attempts to add a given word to the specified position of the WordGrid.
      *The word is added from top left towards the bottom right, it must fit on the board,
      *and must have a corresponding letter to match any letters that it overlaps.
@@ -147,6 +151,7 @@ public class WordSearch{
      *or there are overlapping letters that do not match, then false is returned
      *and the board is not modified.
      */
+     /**
     public boolean addWordDiagonal(String word,int row, int col){
       if (col > colsNum || row > rowsNum || row > (rowsNum - word.length() + 1) || col > (colsNum - word.length() + 1)){
         System.out.println("invalid row and col for this word");
@@ -163,6 +168,7 @@ public class WordSearch{
       }
       return true;
     }
+    **/
 
     public boolean addWord(int row, int col, String word, int rowInc, int colInc){
       int rowR = row;
@@ -196,7 +202,7 @@ public class WordSearch{
             words.add(input.nextLine());
           }
         }
-        
+
 
       }
     }
