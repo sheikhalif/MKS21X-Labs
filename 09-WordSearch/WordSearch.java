@@ -1,5 +1,7 @@
 /*Lab9: Word Search generator
 */
+import java.util.ArrayList;
+
 public class WordSearch{
     private char[][]data;
     int rowsNum;
@@ -181,5 +183,21 @@ public class WordSearch{
         colR += colInc;
       }
       return true;
+    }
+
+    public void addAllWords(String filename){
+      try{
+        ArrayList<String> words = new ArrayList<String>();
+        File file = new File(filename);
+        Scanner input = new Scanner(file);
+        while (input.hasNextLine()){
+          String currentWord = input.nextLine();
+          if (!(currentWord.equals(""))){
+            words.add(input.nextLine());
+          }
+        }
+        
+
+      }
     }
 }
