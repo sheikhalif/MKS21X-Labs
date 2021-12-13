@@ -1,6 +1,10 @@
 /*Lab9: Word Search generator
 */
 import java.util.ArrayList;
+import java.util.Random;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class WordSearch{
     private char[][]data;
@@ -72,9 +76,47 @@ public class WordSearch{
       example3.addWord(3, 2, "hello", 1, 1);
       System.out.println(example3.toString() + "\n");
       example3.addWord(10, 10, "tree", -1, -1);
+      example3.addWord(10, 10, "tree", -1, 0);
+      example3.addWord(10, 10, "tree", 0, -1);
       System.out.println(example3.toString() + "\n");
       example3.addWord(7, 4, "droe", 0, 1);
       System.out.println(example3.toString() + "\n");
+      int[] randomDirectionTest = new int[10000];
+      for (int i = 0; i < 10000; i++){
+        randomDirectionTest[i] = randomDirection(true);
+      }
+      int numNeg1 = 0;
+      int num0 = 0;
+      int num1 = 0;
+      for (int i = 0; i < 10000; i++){
+        if (randomDirectionTest[i] == -1){
+          numNeg1++;
+        }
+        if (randomDirectionTest[i] == 0){
+          num0++;
+        }
+        if (randomDirectionTest[i] == 1){
+          num1++;
+        }
+        if (randomDirectionTest[i] != -1 && randomDirectionTest[i] != 0 && randomDirectionTest[i] != 1){
+          System.out.println("invalid random direction: " + randomDirectionTest[i]);
+        }
+      }
+      System.out.println("num -1: "+ numNeg1);
+      System.out.println("num 0: "+ num0);
+      System.out.println("num 1: "+ num1);
+
+      for(int i = 0; i < 1000; i++){
+        int ranNum = randomNum(1, 15);
+        if (ranNum < 1 || ranNum > 14){
+          System.out.println("invalid value: " + ranNum);
+        }
+      }
+
+      WordSearch example4 = new WordSearch(15, 10);
+      example4.clear();
+      example4.addAllWords("addAllWordsExample1.txt");
+      System.out.println(example4.toString());
 
     }
 
@@ -173,22 +215,27 @@ public class WordSearch{
     public boolean addWord(int row, int col, String word, int rowInc, int colInc){
       int rowR = row;
       int colR = col;
-      for (int i = 0; i < word.length(); i++){
-        if (data[rowR-1][colR-1] != '_' && data[rowR-1][colR-1] != word.charAt(i)){
-          System.out.println("word does not fit");
-          return false;
+      try{
+        for (int i = 0; i < word.length(); i++){
+          if (data[rowR-1][colR-1] != '_' && data[rowR-1][colR-1] != word.charAt(i)){
+            return false;
+          }
+          rowR += rowInc;
+          colR += colInc;
         }
-        rowR += rowInc;
-        colR += colInc;
+        rowR = row;
+        colR = col;
+        for (int  i = 0; i < word.length(); i++){
+          data[rowR-1][colR-1] = word.charAt(i);
+          rowR += rowInc;
+          colR += colInc;
+        }
+        return true;
       }
-      rowR = row;
-      colR = col;
-      for (int  i = 0; i < word.length(); i++){
-        data[rowR-1][colR-1] = word.charAt(i);
-        rowR += rowInc;
-        colR += colInc;
+      catch (ArrayIndexOutOfBoundsException ex){
+        return false;
       }
-      return true;
+
     }
 
     public void addAllWords(String filename){
@@ -199,11 +246,43 @@ public class WordSearch{
         while (input.hasNextLine()){
           String currentWord = input.nextLine();
           if (!(currentWord.equals(""))){
-            words.add(input.nextLine());
+            words.add(currentWord);
+          }
+        }
+        for (int x = 0; x < words.size(); x++){
+          for (int i = 0; i < rowsNum * colsNum * 100; i++){
+            int ranRowInc = randomDirection(false);
+            int ranColInc = randomDirection(ranRowInc == 0);
+            if (addWord(randomNum(1, rowsNum+1), randomNum(1, colsNum+1), words.get(x), ranRowInc, ranColInc) == true){
+              i = rowsNum * colsNum * 100;
+            }
+          }
+        }
+      }
+      catch (FileNotFoundException ex) {
+      System.out.println("Not a valid file name");
+    }
+    }
+
+    public static int randomDirection(boolean bool){
+      while (true){
+        int num = (int)(Math.random() * 4);
+        if (bool == false){
+          if (num != 0){
+            return num - 2;
+          }
+        }
+        if (bool == true){
+          if (num != 0 && num != 2){
+            return num - 2;
           }
         }
 
-
       }
+    }
+
+    public static int randomNum(int small, int large) {
+      Random random = new Random();
+      return random.nextInt(large - small) + small;
     }
 }
