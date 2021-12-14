@@ -7,11 +7,30 @@ public class WordSearch{
   private int seed;
 
   public static void main(String args[]){
-    WordSearch example1 = new WordSearch(15, 10, "addAllWordsExample1.txt");
+    WordSearch example1 = new WordSearch(Integer.parseInt(args[0]), Integer.parseInt(args[1]), args[2]);
+    if (args.length == 6){
+      WordSearch example1 = new WordSearch(Integer.parseInt(args[0]), Integer.parseInt(args[1]), args[2], Integer.parseInt(args[4]));
+    }
+    if (Integer.parseInt(args[3]) == 0){
+      example1.fillInRandomLetters();
+    }
     System.out.println(example1.toString());
   }
 
   //assume a rectangular grid
+
+  private void fillInRandomLetters(){
+    rng = new Random();
+    rng = new Random(seed);
+    for (int i = 0; i < grid.length; i++){
+      for (int x = 0; x < grid[i].length; x++){
+        if (grid[i][x] == '_'){
+          grid[i][x] = (char)('A' + rng.nextInt(26));
+        }
+      }
+    }
+  }
+
   private void addAllWords(String filename){
     ArrayList<String> wordsToAdd = loadWordsFromFile(filename);
     for (int x = 0; x < wordsToAdd.size(); x++){
@@ -24,12 +43,14 @@ public class WordSearch{
         }
       }
     }
-    public static int randomDirection(boolean bool){
+    private int randomDirection(boolean bool){
       while (true){
-        int num = (int)(Math.random() * 4);
+        Random random = new Random();
+        random = new Random(seed);
+        int num = random.nextInt(3);
         if (bool == false){
           if (num != 0){
-            return num - 2;
+            return num - 1;
           }
         }
         if (bool == true){
@@ -40,8 +61,9 @@ public class WordSearch{
 
       }
     }
-    public static int randomNum(int small, int large) {
+    private int randomNum(int small, int large) {
       Random random = new Random();
+      random = new Random(seed);
       return random.nextInt(large - small) + small;
     }
 
