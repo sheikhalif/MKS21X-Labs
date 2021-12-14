@@ -7,14 +7,21 @@ public class WordSearch{
   private int seed;
 
   public static void main(String args[]){
-    WordSearch example1 = new WordSearch(Integer.parseInt(args[0]), Integer.parseInt(args[1]), args[2]);
+
     if (args.length == 6){
       WordSearch example1 = new WordSearch(Integer.parseInt(args[0]), Integer.parseInt(args[1]), args[2], Integer.parseInt(args[4]));
+      if (Integer.parseInt(args[3]) == 0){
+        example1.fillInRandomLetters();
+      }
+      System.out.println(example1.toString());
     }
-    if (Integer.parseInt(args[3]) == 0){
-      example1.fillInRandomLetters();
+    else{
+      WordSearch example1 = new WordSearch(Integer.parseInt(args[0]), Integer.parseInt(args[1]), args[2]);
+      if (Integer.parseInt(args[3]) == 0){
+        example1.fillInRandomLetters();
+      }
+      System.out.println(example1.toString());
     }
-    System.out.println(example1.toString());
   }
 
   //assume a rectangular grid
