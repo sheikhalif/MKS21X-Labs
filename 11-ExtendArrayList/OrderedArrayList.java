@@ -7,6 +7,10 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
   }
   @Override
   public void add(int elem){
-    
+
+  }
+
+  private int whereToPlace(T value){
+    for (int i = 0; i < )
   }
 }
