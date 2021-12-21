@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class NoNullArrayList<T> extends ArrayList<T> {
   public NoNullArrayList(){
     super();
@@ -7,15 +9,17 @@ public class NoNullArrayList<T> extends ArrayList<T> {
     super(intCap);
   }
 
-  public T add(T elem){
+  @Override
+  public boolean add(T elem){
     if (elem != null){
       super.add(elem);
     }
     else{
       throw new IllegalArgumentException("null is not a valid input for this method");
     }
+    return true;
   }
-
+  @Override
   public T set(int index, T elem){
     if (elem != null){
       super.set(index, elem);
@@ -23,5 +27,6 @@ public class NoNullArrayList<T> extends ArrayList<T> {
     else{
       throw new IllegalArgumentException("null is not a valid input for this method");
     }
+    return elem;
   }
 }
