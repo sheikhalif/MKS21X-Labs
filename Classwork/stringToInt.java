@@ -11,6 +11,9 @@ public class stringToInt{
         answer += (s.charAt(i) - 48) * Math.pow(10, power);
         power++;
       }
+      else{
+        throw new IllegalArgumentException ("only input integers");
+      }
     }
     if (start == 1)return answer * -1;
     return answer;
@@ -21,5 +24,9 @@ public class stringToInt{
     System.out.println(stringToInt("-8798234"));
     int test = stringToInt("59") + stringToInt("11");
     System.out.println(test);
+    int test2 = stringToInt("59") + stringToInt("-19");
+    System.out.println(test2);
+    int test3 = stringToInt("df") + stringToInt("-19");
+    System.out.println(test3);
   }
 }
