@@ -13,6 +13,19 @@ public class Game{
     System.out.println(a+" ("+a.getHP()+"HP)");
     System.out.println(b+" ("+b.getHP()+"HP)");
 
+    Adventurer c = new Wizard("Conan","Aaaaaaaar!",20);
+    Adventurer d = new Wizard("Homer","Donuts?",0);
+    System.out.println(c+" ("+c.getHP()+"HP)");
+    System.out.println(d+" ("+d.getHP()+"HP)");
+    c.attack(d);
+    c.attack(d);
+    System.out.println(c+" ("+c.getHP()+"HP)");
+    System.out.println(d+" ("+d.getHP()+"HP)");
+    c.specialAttack(d);
+    d.specialAttack(c);
+    System.out.println(c+" ("+c.getHP()+"HP)");
+    System.out.println(d+" ("+d.getHP()+"HP)");
+
     }
 
 }
