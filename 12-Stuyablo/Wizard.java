@@ -22,17 +22,17 @@ public class Wizard extends Adventurer {
       int damage = (int)(Math.random()*10)+1;
       other.applyDamage(damage);
       setAbility(getAbility() + 1);
-      System.out.println(this +
-          " attacked " + other + " for " +
-          damage + " damage!");
+      //System.out.println(this +
+      //    " attacked " + other + " for " +
+      //    damage + " damage!");
   }
 
   public void specialAttack(Damageable other){
      if(getAbility() >= 10){
           int damage = (int)(Math.random()*20)+1;
           other.applyDamage(damage);
-          System.out.println(this + " cast a spell on "
-           + other + " for " + damage + " damage! "+ spellName);
+          //System.out.println(this + " cast a spell on "
+          // + other + " for " + damage + " damage! "+ spellName);
           setAbility(getAbility() - 10);
     }else{
         System.out.println("Not enough mana! ");

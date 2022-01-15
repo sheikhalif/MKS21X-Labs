@@ -37,6 +37,13 @@ public class StuyabloGame{
     System.out.print("\u001b[2J");
   }
 
+  public static void clearLine(int row){
+    for (int i = 2; i < 80; i++){
+      go(row, i);
+      System.out.println("\u001b[2J");
+    }
+  }
+
   public static String colorize(String text,int c1){
     return ("\u001b[" + c1 + "m"+text+"\u001b[0m");
   }
@@ -62,7 +69,14 @@ public class StuyabloGame{
       go(startRow+1, start + gap*i);
       System.out.print(party.get(i).playerAbilityType() + ": " + party.get(i).getAbility());
       go (startRow+2, start + gap*i);
-      System.out.print("Health: " + party.get(i).getHP() + "/" + party.get(i).getMaxHp());
+      double healthNum =  party.get(i).getHP();
+      if (healthNum < 0)healthNum = 0;
+      if (0.25 > (healthNum/party.get(i).getMaxHp())){
+        System.out.print(colorize("Health: " + (int)healthNum + "/" + party.get(i).getMaxHp(), RED));
+      }
+      else if (0.25 <= (healthNum/party.get(i).getMaxHp())){
+        System.out.print(colorize("Health: " + (int)healthNum + "/" + party.get(i).getMaxHp(), GREEN));
+      }
     }
   }
 
@@ -73,6 +87,7 @@ public class StuyabloGame{
   }
 
   public static void drawScreen(){
+    go(1, 1);
     for (int i = 0; i < 80; i++){
       System.out.print(colorize(" ", WHITE, WHITE+BACKGROUND));
     }
@@ -122,6 +137,8 @@ public class StuyabloGame{
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
 
       //Draw the window border
+      clearLine(HEIGHT+1);
+      clearLine(HEIGHT/2);
       hideCursor();
       drawScreen();
 
