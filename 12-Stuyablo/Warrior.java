@@ -1,6 +1,7 @@
 public class Warrior extends Adventurer {
     private int  rage;
     private String warcry;
+    private int maxHp;
 
     public Warrior(){
 	     this("Magnus");
@@ -11,7 +12,8 @@ public class Warrior extends Adventurer {
     }
 
     public Warrior(String name, String warcry, int rage){
-      super(name,30+(int)(Math.random()*10));
+      super(name, 30+(int)(Math.random()*10));
+      maxHp = this.getHP();
       setWarcry(warcry);
       setRage(rage);
     }
@@ -53,6 +55,10 @@ public class Warrior extends Adventurer {
 
     public void setWarcry(String warcry){
 	     this.warcry = warcry;
+    }
+
+    public int getMaxHp(){
+      return maxHp;
     }
 
 

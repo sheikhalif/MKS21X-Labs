@@ -1,6 +1,7 @@
 public class Wizard extends Adventurer {
   private int mana;
   private String spellName;
+  private int maxHp;
 
   public Wizard(){
     this("Harry");
@@ -12,6 +13,7 @@ public class Wizard extends Adventurer {
 
   public Wizard(String name, String spellName, int mana){
     super(name,30+(int)(Math.random()*10));
+    maxHp = this.getHP();
     setSpellName(spellName);
     setMana(mana);
   }
@@ -48,5 +50,9 @@ public class Wizard extends Adventurer {
 
   public void setSpellName(String spellName){
      this.spellName = spellName;
+  }
+
+  public int getMaxHp(){
+    return maxHp;
   }
 }

@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 import java.lang.*;
 
-public class Game{
+public class gametest{
   /*Base colors*/
   public static final int BLACK = 30;
   public static final int RED = 31;
@@ -22,6 +22,7 @@ public class Game{
   public static final int UNDERLINE = 4;
   public static final int INVERTED = 7;
 
+  /*Reset colors*/
   public static void reset(){
     System.out.print("\u001b[0m");
   }
@@ -58,52 +59,22 @@ public class Game{
     return ("\u001b[" + c1 + ";" + c2 + ";" + c3 + "m"+text+"\u001b[0m");
   }
 
-  public static void screen(){
-    for (int i = 0; i < 80; i++){
-      System.out.print(colorize(" ", WHITE, WHITE+BACKGROUND));
+  public static void makeScreen () {
+    for (int i=0; i<80; i++) {
+      System.out.print(colorize(" ", BLUE, BLUE+BACKGROUND));
     }
-    for (int i = 0; i < 29; i++){
-      System.out.print("\n"+colorize(" ", WHITE, WHITE+BACKGROUND));
+    for (int i=0; i<29; i++) {
+      System.out.print("\n"+colorize(" ", BLUE, BLUE+BACKGROUND));
     }
-    go(30, 1);
-    for (int i = 0; i < 80; i++){
-      System.out.print(colorize(" ", WHITE, WHITE+BACKGROUND));
+    go (30,1);
+    for (int i=0; i<80; i++) {
+      System.out.print(colorize(" ", BLUE, BLUE+BACKGROUND));
     }
-    for (int i = 1; i < 31; i++){
-      go (i, 80);
-      System.out.print(colorize(" ", WHITE, WHITE+BACKGROUND));
+    for (int i=1; i<31; i++) {
+      go (i,80);
+      System.out.print(colorize(" ", BLUE, BLUE+BACKGROUND));
     }
   }
-
-  public static void playerNamesAndInfo(){
-    int players = 2;
-    Wizard Amber = new Wizard("Amber", "Bing bong", 10);
-    Warrior Ferry = new Warrior("Ferry", "ahhhhhhh", 15);
-    int start = 78/(players+1);
-    go (5, start-3);
-    System.out.print("Amber");
-    go(6, start-5);
-    System.out.print("Mana: " + Amber.getMana());
-    go(7, start-7);
-    System.out.println("Health: " + Amber.getHP() + "/" + Amber.getMaxHp());
-    go (5, start*2-3);
-    System.out.print("Ferry");
-    go(6, start*2-5);
-    System.out.print("Rage: " + Ferry.getRage());
-    go(7, start*2-7);
-    System.out.println("Health: " + Ferry.getHP() + "/" + Ferry.getMaxHp());
-  }
-
-  public static void main(String[] args) {
-    clear();
-    go(1,1);
-    screen();
-    playerNamesAndInfo();
-  }
-
-}
-
-/**
 
   public static void redrawArray (int[] ary) {
     int inc = 78/5+1;
@@ -138,7 +109,6 @@ public class Game{
     clear();
     go(1,1);
     makeScreen();
-    redrawArray(a);
 
     // designing game screen
 
@@ -171,4 +141,3 @@ public class Game{
     System.exit(1);
   }
 }
-**/
