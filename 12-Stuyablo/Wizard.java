@@ -18,25 +18,22 @@ public class Wizard extends Adventurer {
     setAbility(mana);
   }
 
-  public void attack(Damageable other){
+  public String attack(Damageable other){
       int damage = (int)(Math.random()*10)+1;
       other.applyDamage(damage);
       setAbility(getAbility() + 1);
-      //System.out.println(this +
-      //    " attacked " + other + " for " +
-      //    damage + " damage!");
+      return (this + " attacked " + other + " for " + damage + " damage!");
   }
 
-  public void specialAttack(Damageable other){
+  public String specialAttack(Damageable other){
      if(getAbility() >= 10){
           int damage = (int)(Math.random()*20)+1;
           other.applyDamage(damage);
-          //System.out.println(this + " cast a spell on "
-          // + other + " for " + damage + " damage! "+ spellName);
           setAbility(getAbility() - 10);
+          return (this + " cast a spell on " + other + " for " + damage + " damage! "+ spellName);
     }else{
-        System.out.println("Not enough mana! ");
-        attack(other);
+      attack(other);
+      return("Not enough mana! ");
     }
   }
 
@@ -45,7 +42,9 @@ public class Wizard extends Adventurer {
   }
 
   public void setAbility(int r){
-     this.mana = r;
+    int maxCheck = r;
+    if (maxCheck > 45)maxCheck = 45;
+     this.mana = maxCheck;
   }
 
   public void setAbilityCall(String spellName){

@@ -4,8 +4,8 @@ public abstract class Adventurer implements Damageable{
     private int HP;
 
     //Abstract methods are meant to be implemented in child classes.
-    public abstract void attack(Damageable other);
-    public abstract void specialAttack(Damageable other);
+    public abstract String attack(Damageable other);
+    public abstract String specialAttack(Damageable other);
 
     public Adventurer(){
   	   this("Lester");

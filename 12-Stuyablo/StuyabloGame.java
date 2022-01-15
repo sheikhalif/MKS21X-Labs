@@ -67,7 +67,7 @@ public class StuyabloGame{
       go(startRow, start + gap*i);
       System.out.print(party.get(i).getName());
       go(startRow+1, start + gap*i);
-      System.out.print(party.get(i).playerAbilityType() + ": " + party.get(i).getAbility());
+      System.out.print(party.get(i).playerAbilityType() + ": " + party.get(i).getAbility() + "/45");
       go (startRow+2, start + gap*i);
       double healthNum =  party.get(i).getHP();
       if (healthNum < 0)healthNum = 0;
@@ -145,11 +145,15 @@ public class StuyabloGame{
       //display event based on last turn's input
       if(partyTurn){
         //Process user input:
-        if(input.equals("attack")){
-          party.get(whichPlayer).attack(enemies.get(0));
+        if(input.equals("attack") || input.equals("")){
+          String output = party.get(whichPlayer).attack(enemies.get(0));
+          go(HEIGHT/2 - 1, 2);
+          System.out.print(output);
         }
         else if(input.equals("special")){
-          party.get(whichPlayer).specialAttack(enemies.get(0));
+          String output = party.get(whichPlayer).specialAttack(enemies.get(0));
+          go(HEIGHT/2 - 1, 2);
+          System.out.print(output);
         }
         whichPlayer++;
 
@@ -176,10 +180,14 @@ public class StuyabloGame{
           int rng2 = rand.nextInt();
           int rng3 = rand.nextInt();
           if (enemies.get(0).getAbility() >= 10 && rng2 > 0 && rng3 > 0){
-            enemies.get(0).specialAttack(party.get(attackVictim));
+            String output = enemies.get(0).specialAttack(party.get(attackVictim));
+            go(HEIGHT/2 - 1, 2);
+            System.out.print(output);
           }
           else{
-            enemies.get(0).attack(party.get(attackVictim));
+            String output = enemies.get(0).attack(party.get(attackVictim));
+            go(HEIGHT/2 - 1, 2);
+            System.out.print(output);
           }
         }
 

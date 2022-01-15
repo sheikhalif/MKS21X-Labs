@@ -20,25 +20,22 @@ public class Warrior extends Adventurer {
 
     //warrior methods
 
-    public void attack(Damageable other){
+    public String attack(Damageable other){
     	  int damage = (int)(Math.random()*10)+1;
   	    other.applyDamage(damage);
   	    setAbility(getAbility() + 1);
-  	    //System.out.println(this +
-        //    " attacked " + other + " for " +
-        //    damage + " damage!");
+  	    return (this + " attacked " + other + " for " + damage + " damage!");
     }
 
-    public void specialAttack(Damageable other){
+    public String specialAttack(Damageable other){
 	     if(getAbility() >= 10){
   	        int damage = (int)(Math.random()*20)+1;
             other.applyDamage(damage);
-            //System.out.println(this + " unleashes his fury upon "
-            // + other + " for " + damage + " damage! "+warcry);
             setAbility(getAbility() - 10);
+            return (this + " unleashes his fury upon " + other + " for " + damage + " damage! "+warcry);
 	    }else{
-			    System.out.println("Not enough rage! ");
-          attack(other);
+        attack(other);
+			  return("Not enough rage!");
 	    }
     }
 
@@ -50,7 +47,9 @@ public class Warrior extends Adventurer {
 
     //set methods
     public void setAbility(int r){
-	     this.rage = r;
+      int maxCheck = r;
+      if (maxCheck > 45)maxCheck = 45;
+	     this.rage = maxCheck;
     }
 
     public void setAbilityCall(String warcry){
