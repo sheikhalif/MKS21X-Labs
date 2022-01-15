@@ -47,5 +47,17 @@ public abstract class Adventurer implements Damageable{
 	     this.name = s;
     }
 
+    public String playerAbilityType(){
+      return "Error: this playerAbilityType() call is in the parent adventurer class";
+    }
+
+    public int getAbility(){
+      return -1;
+    }
+
+    public int getMaxHp(){
+      return -1;
+    }
+
 
 }

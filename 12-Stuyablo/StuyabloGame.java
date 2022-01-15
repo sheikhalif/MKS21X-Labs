@@ -2,8 +2,50 @@ import java.util.*;
 public class StuyabloGame{
   private static final int WIDTH = 80;
   private static final int HEIGHT = 30;
-  private static final int BORDER_COLOR = Text.BLACK;
-  private static final int BORDER_BACKGROUND = Text.WHITE + Text.BACKGROUND;
+  public static final int BLACK = 30;
+  public static final int RED = 31;
+  public static final int GREEN = 32;
+  public static final int YELLOW = 33;
+  public static final int BLUE = 34;
+  public static final int MAGENTA = 35;
+  public static final int CYAN = 36;
+  public static final int WHITE = 37;
+  public static final int BACKGROUND = 10;
+  public static final int BRIGHT = 60;
+  public static final int BOLD = 1;
+  public static final int UNDERLINE = 4;
+  public static final int INVERTED = 7;
+
+  public static void reset(){
+    System.out.print("\u001b[0m");
+  }
+
+
+  public static void hideCursor(){
+    System.out.print("\u001b[?25l");
+  }
+
+  public static void showCursor(){
+    System.out.print("\u001b[?25h");
+  }
+
+  public static void go(int row,int col){
+      System.out.print("\u001b[" + row + ";" + col + "f");
+  }
+
+  public static void clear(){
+    System.out.print("\u001b[2J");
+  }
+
+  public static String colorize(String text,int c1){
+    return ("\u001b[" + c1 + "m"+text+"\u001b[0m");
+  }
+  public static String colorize(String text,int c1,int c2){
+    return ("\u001b[" + c1 + ";" + c2 + "m"+text+"\u001b[0m");
+  }
+  public static String colorize(String text,int c1,int c2,int c3){
+    return ("\u001b[" + c1 + ";" + c2 + ";" + c3 + "m"+text+"\u001b[0m");
+  }
 
   public static void main(String[] args) {
     run();
@@ -12,14 +54,15 @@ public class StuyabloGame{
   //Display a List of 1-4 adventurers on the rows row through row+3 (4 rows max)
   //Should include Name and HP on 2 separate lines. (more to be added later)
   public static void drawParty(ArrayList<Adventurer> party,int startRow){
-    int start = 78/(party.size()+1);
-    for(int i = 1; i++; i <= party.size()){
-      go(5, start*i - 3);
-      System.out.print(party.get(i-1).getName());
-      go(6, start*i-5);
-      System.out.print(party.get(i-1).playerAbilityType() + ": " + party.get(i-1).getAbility());
-      go (7, start*i-7);
-      System.out.print("Health: " + party.get(i-1).getHP() + "/" + party.get(i-1).getMaxHp());
+    int start = 17;
+    int gap = 20;
+    for(int i = 0; i < party.size(); i++){
+      go(startRow, start + gap*i);
+      System.out.print(party.get(i).getName());
+      go(startRow+1, start + gap*i);
+      System.out.print(party.get(i).playerAbilityType() + ": " + party.get(i).getAbility());
+      go (startRow+2, start + gap*i);
+      System.out.print("Health: " + party.get(i).getHP() + "/" + party.get(i).getMaxHp());
     }
   }
 
@@ -49,9 +92,9 @@ public class StuyabloGame{
 
   public static void run(){
     //Clear and initialize
-    Text.hideCursor();
-    Text.clear();
-    Text.go(1,1);
+    hideCursor();
+    clear();
+    go(1,1);
 
 
     //Things to attack:
@@ -79,7 +122,7 @@ public class StuyabloGame{
     while(! (input.equalsIgnoreCase("q") || input.equalsIgnoreCase("quit"))){
 
       //Draw the window border
-      Text.hideCursor();
+      hideCursor();
       drawScreen();
 
       //display event based on last turn's input
@@ -139,18 +182,18 @@ public class StuyabloGame{
       drawParty(enemies,HEIGHT-5);
 
       //Draw the prompt
-      Text.reset();
-      Text.go(HEIGHT+1,1);
-      Text.showCursor();
+      reset();
+      go(HEIGHT+1,1);
+      showCursor();
       System.out.print(">");
       //Read user input
       input = in.nextLine();
     }
 
     //After quit reset things:
-    Text.reset();
-    Text.showCursor();
-    Text.go(32,1);
+    reset();
+    showCursor();
+    go(32,1);
   }
 
 

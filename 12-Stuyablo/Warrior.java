@@ -14,8 +14,8 @@ public class Warrior extends Adventurer {
     public Warrior(String name, String warcry, int rage){
       super(name, 30+(int)(Math.random()*10));
       maxHp = this.getHP();
-      setWarcry(warcry);
-      setRage(rage);
+      setAbilityCall(warcry);
+      setAbility(rage);
     }
 
     //warrior methods
@@ -23,19 +23,19 @@ public class Warrior extends Adventurer {
     public void attack(Damageable other){
     	  int damage = (int)(Math.random()*10)+1;
   	    other.applyDamage(damage);
-  	    setRage(getRage() + 1);
+  	    setAbility(getAbility() + 1);
   	    System.out.println(this +
             " attacked " + other + " for " +
             damage + " damage!");
     }
 
     public void specialAttack(Damageable other){
-	     if(getRage() >= 10){
+	     if(getAbility() >= 10){
   	        int damage = (int)(Math.random()*20)+1;
             other.applyDamage(damage);
             System.out.println(this + " unleashes his fury upon "
              + other + " for " + damage + " damage! "+warcry);
-            setRage(getRage() - 10);
+            setAbility(getAbility() - 10);
 	    }else{
 			    System.out.println("Not enough rage! ");
           attack(other);
@@ -61,7 +61,7 @@ public class Warrior extends Adventurer {
       return maxHp;
     }
 
-    public string playerAbilityType(){
+    public String playerAbilityType(){
       return "Rage";
     }
 
