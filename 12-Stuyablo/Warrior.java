@@ -44,16 +44,16 @@ public class Warrior extends Adventurer {
 
     //get methods
 
-    public int getRage(){
+    public int getAbility(){
 	     return rage;
     }
 
     //set methods
-    public void setRage(int r){
+    public void setAbility(int r){
 	     this.rage = r;
     }
 
-    public void setWarcry(String warcry){
+    public void setAbilityCall(String warcry){
 	     this.warcry = warcry;
     }
 

@@ -40,15 +40,15 @@ public class Wizard extends Adventurer {
     }
   }
 
-  public int getMana(){
+  public int getAbility(){
      return mana;
   }
 
-  public void setMana(int r){
+  public void setAbility(int r){
      this.mana = r;
   }
 
-  public void setSpellName(String spellName){
+  public void setAbilityCall(String spellName){
      this.spellName = spellName;
   }
 

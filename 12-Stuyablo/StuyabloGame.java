@@ -12,9 +12,8 @@ public class StuyabloGame{
   //Display a List of 1-4 adventurers on the rows row through row+3 (4 rows max)
   //Should include Name and HP on 2 separate lines. (more to be added later)
   public static void drawParty(ArrayList<Adventurer> party,int startRow){
-    /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-    //YOUR CODE HERE
-    /*<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<*/
+    int start = 78/(party.size()+1);
+    go (5, start-3)
   }
 
   //Display a line of text starting at column 2 of the specified row.
