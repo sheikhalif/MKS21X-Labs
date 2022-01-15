@@ -55,4 +55,8 @@ public class Wizard extends Adventurer {
   public int getMaxHp(){
     return maxHp;
   }
+
+  public string playerAbilityType(){
+    return "Mana";
+  }
 }

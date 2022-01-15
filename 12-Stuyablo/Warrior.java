@@ -61,5 +61,9 @@ public class Warrior extends Adventurer {
       return maxHp;
     }
 
+    public string playerAbilityType(){
+      return "Rage";
+    }
+
 
 }
